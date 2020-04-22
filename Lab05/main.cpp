@@ -1,4 +1,3 @@
-/* created by nvhoang */
 #ifdef __APPLE__
 #include <OpenGL/gl.h>
 #include <GLUT/glut.h>
@@ -28,7 +27,7 @@ void initBase(void) {
 void drawDinosaur(const char * fileName) {
 
 	std::ifstream inFile;
-	inFile.open(fileName);	// read the file
+	inFile.open(fileName);	// read the data file
 
 	if(inFile.fail()) return;
 	glClear(GL_COLOR_BUFFER_BIT);    
@@ -36,7 +35,8 @@ void drawDinosaur(const char * fileName) {
 	GLint numOfPolyLines, numOfPoints;
 	GLfloat x ,y;
 	inFile >> numOfPolyLines;		        
-
+	
+	// traverse and draw each poly line
 	for (int iPoly = 0; iPoly < numOfPolyLines; iPoly++) {
 		inFile >> numOfPoints;
 		glBegin(GL_LINE_STRIP);	    
@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
 	glutInitWindowSize(1, 1);
 	glutInitWindowPosition(150, 150);
 	
-	glutCreateWindow ("NguyenVanHoang_16020231_Tuan05");
+	glutCreateWindow("NguyenVanHoang_16020231_Tuan05");
   	glutReshapeWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
   	
 	initBase();
